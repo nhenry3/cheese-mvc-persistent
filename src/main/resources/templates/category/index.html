@@ -1,32 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments :: head"></head>
-
 <body class="container">
+
 
 <h1 th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<p th:unless="${categories} and ${categories.size()}">No Categories</p>
 
+<ul>
+    <li th:each="category : ${categories}" th:text="${category.name}"></li>
 
-<table class="table">
-
-    <tr>
-        <th>Category</th>
-    </tr>
-
-    <tr th:each="category : ${categories}">
-        <td th:text="${category.name}"></td>
-    </tr>
-    <tr>
-        <td>
-            <a href="category/add">Add</a>
-        </td>
-    </tr>
-
-</table>
+</ul>
+<a href="/category/add">Add Category</a>
 
 </body>
 </html>
